@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 // ignore: depend_on_referenced_packages
 import "package:flutter_stripe/flutter_stripe.dart";
 import 'package:play_with_payment/payment/emun/payment_type_enum.dart';
-import 'package:play_with_payment/payment/payment_factory.dart';
+import 'package:play_with_payment/payment/payment_method_factory.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -114,7 +114,7 @@ class _PaymentMethodCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           onTap: () async {
-            final PaymentFactory paymentFactory = PaymentFactory();
+            final PaymentMethodFactory paymentFactory = PaymentMethodFactory();
             final paymentMethod = paymentFactory.createPaymentMethod(type);
             // In a real app, you might want to show loading or navigate
             await paymentMethod.pay(amount: 1000, currency: 'EGP');
