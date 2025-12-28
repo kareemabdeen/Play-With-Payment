@@ -4,6 +4,7 @@ import 'package:play_with_payment/payment/methods/payment_method.dart';
 import 'package:play_with_payment/payment/methods/stripe_payment.dart';
 import 'package:play_with_payment/payment/methods/wallet_payment.dart';
 
+//* factory class named by this way => Parent class (IPaymentMethod) + Factory => (PaymentMethodFactory)
 class PaymentMethodFactory {
   IPaymentMethod createPaymentMethod(PaymentType type) {
     switch (type) {
