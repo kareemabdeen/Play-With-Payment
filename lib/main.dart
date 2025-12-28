@@ -114,7 +114,8 @@ class _PaymentMethodCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           onTap: () async {
-            final paymentMethod = PaymentFactory.createPaymentMethod(type);
+            final PaymentFactory paymentFactory = PaymentFactory();
+            final paymentMethod = paymentFactory.createPaymentMethod(type);
             // In a real app, you might want to show loading or navigate
             await paymentMethod.pay(amount: 1000, currency: 'EGP');
 
