@@ -10,17 +10,38 @@ A Flutter project demonstrating the integration of various payment methods, desi
 - **Factory Pattern**: Demonstrates the use of the Factory Design Pattern to create payment methods dynamically.
 - **Secure Configuration**: Uses `.env` to securely manage API keys.
 
+---
+
+## 📸 Screenshots
+
+### ✅ Stripe Payment Integration Done
+
+| | |
+|---|---|
+| <img src="https://github.com/user-attachments/assets/dc700497-57b3-401a-94bd-ae0922498c3c" width="300" /> | <img src="https://github.com/user-attachments/assets/e94339b6-0380-4589-948e-04c6cf93db98" width="300" /> |
+
+---
+
 ## 🏗️ Project Architecture
 
 This project implements the **Factory Method Design Pattern** to handle payment method creation. This ensures that the client code (UI) remains decoupled from the specific implementation details of each payment provider.
 
 ### Key Components
 
--   **`IPaymentMethod` (Interface)**: Defines the contract (`pay` method) that all payment methods must implement.
--   **`PaymentFactory`**: A static factory class that takes a `PaymentType` enum and returns the corresponding `IPaymentMethod` instance.
--   **Concrete Strategies**: `StripePayment`, `CreditCardPayment`, and `VodafoneWalletPayment` implement the `IPaymentMethod` interface.
+- **`IPaymentMethod` (Interface)**  
+  Defines the contract (`pay` method) that all payment methods must implement.
 
-### Class Diagram
+- **`PaymentFactory`**  
+  A factory class that resolves and returns the correct payment implementation based on `PaymentType`.
+
+- **Concrete Strategies**
+  - `StripePayment` (Real integration)
+  - `CreditCardPayment` (Simulation)
+  - `VodafoneWalletPayment` (Simulation)
+
+---
+
+## 📐 Class Diagram
 
 ```mermaid
 classDiagram
@@ -49,51 +70,3 @@ classDiagram
     IPaymentMethod <|.. CreditCardPayment
     IPaymentMethod <|.. VodafoneWalletPayment
     PaymentFactory ..> IPaymentMethod : Creates
-```
-
-## 🛠️ Setup & Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/play_with_payment.git
-    cd play_with_payment
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    flutter pub get
-    ```
-
-3.  **Environment Configuration:**
-    Create a `.env` file in the root directory of the project. You can copy the structure below:
-
-    ```properties
-    STRIPE_PUBLISHABLE_KEY=pk_test_your_publishable_key
-    STRIPE_SECRET_KEY=sk_test_your_secret_key
-    ```
-    > **Note:** The `.env` file is git-ignored to protect your secrets.
-
-4.  **Run the App:**
-    ```bash
-    flutter run
-    ```
-
-## 📦 Dependencies
-
-- [flutter_stripe](https://pub.dev/packages/flutter_stripe): For Stripe payment integration.
-- [flutter_dotenv](https://pub.dev/packages/flutter_dotenv): For loading environment variables.
-- [dio](https://pub.dev/packages/dio): For making HTTP requests to the Stripe API (or your backend).
-
-## 📂 Project Structure
-
-- `lib/payment/methods`: Contains the implementation of different payment strategies (`StripePayment`, `CreditCardPayment`, `VodafoneWalletPayment`).
-- `lib/payment/payment_factory.dart`: The factory class responsible for creating payment method instances.
-- `lib/main.dart`: The main entry point and UI for selecting payment methods.
-
-## 📸 Screenshots
-
-*(Add your screenshots here)*
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
