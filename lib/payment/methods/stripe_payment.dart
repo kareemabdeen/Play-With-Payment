@@ -32,7 +32,12 @@ class StripePayment implements IPaymentMethod {
       ),
     );
   }
-
+/* 
+For better security in production apps, this logic should be handled by the backend.
+The Stripe secret key should never be exposed in client-side code because it can be easily retrieved.
+Instead, the app should call a backend API that creates the PaymentIntent
+and returns only the client secret.
+*/
   Future<String> _getClientSecret(String amount, String currency) async {
     Dio dio = Dio();
     var response = await dio.post(
